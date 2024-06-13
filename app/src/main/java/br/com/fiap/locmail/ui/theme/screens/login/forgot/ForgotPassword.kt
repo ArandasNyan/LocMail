@@ -1,5 +1,5 @@
 // ui/screens/LoginScreen.kt
-package br.com.fiap.locmail.ui.theme.screens.login
+package br.com.fiap.locmail.ui.theme.screens.login.forgot
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -13,20 +13,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.fiap.locmail.R
-import br.com.fiap.locmail.ui.theme.RoyalBlue
-import br.com.fiap.locmail.ui.theme.Zinc50
-import br.com.fiap.locmail.ui.theme.Zinc700
-import br.com.fiap.locmail.ui.theme.Zinc900
+import br.com.fiap.locmail.ui.theme.*
 import br.com.fiap.locmail.ui.theme.components.TextInput
 
 @Composable
-fun LoginScreen() {
-    var username by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-    var rememberMe by remember { mutableStateOf(false) }
+fun ForgotPasswordScreen() {
+    var useremail by remember { mutableStateOf("") }
 
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -63,22 +59,34 @@ fun LoginScreen() {
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = "Bem-Vindo!",
+                        text = "Eita! Esqueceu sua senha?",
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Medium,
                         color = Zinc50,
                         onTextLayout = { }
                     )
                     Spacer(modifier = Modifier.height(8.dp))
+
                     Text(
-                        text = "Que bom ver você novamente!",
+                        text = "Não se preocupe, deixaremos isso fácil por você!",
                         fontSize = 16.sp,
-                        color = Zinc50,
+                        color = Zinc100,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.width(260.dp),
+                        onTextLayout = { }
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    Text(
+                        text = "Enviaremos um código no seu email favorito!",
+                        fontSize = 14.sp,
+                        color = Zinc400,
                         onTextLayout = { }
                     )
                 }
 
-                Spacer(modifier = Modifier.height(16.dp))
+
+                Spacer(modifier = Modifier.height(8.dp))
 
                 /* =================== Form =================== */
                 Column(
@@ -89,69 +97,21 @@ fun LoginScreen() {
                     Column(
                         modifier = Modifier.padding(0.dp, 12.dp)
                     ) {
-                        TextInput(
-                            modifier = Modifier.fillMaxWidth(),
-                            value = username,
-                            onValueChange = { username = it },
-                            label = "Seu usuário",
-                            leadingIconResId = R.drawable.at_sign,
-                            leadingIconTint = Zinc50
-                        )
-
-                        TextInput(
-                            modifier = Modifier.fillMaxWidth(),
-                            value = password,
-                            onValueChange = { password = it },
-                            label = "Sua senha",
-                            leadingIconResId = R.drawable.key_round,
-                            leadingIconTint = Zinc50
-                        )
-
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                /* =================== Check Box =================== */
-                                Checkbox(
-                                    checked = rememberMe,
-                                    onCheckedChange = { rememberMe = it },
-                                    modifier = Modifier
-                                        .padding(0.dp)
-                                        .size(20.dp, 20.dp),
-                                    colors = CheckboxDefaults.colors(
-                                        checkedColor = RoyalBlue,
-                                        uncheckedColor = Zinc700)
-                                )
-
-                                Spacer(modifier = Modifier.width(8.dp))
-
-                                Text(
-                                    text = "Lembre de mim!",
-                                    color = Zinc50,
-                                    fontSize = 14.sp,
-                                    onTextLayout = { }
-                                )
-                            }
-
-                            /* =================== Phrase Forgot =================== */
-                            ClickableText(
-                                text = AnnotatedString("Esqueceu a senha?"),
-                                onClick = { /* Handle click */ },
-                                style = TextStyle(
-                                    color = RoyalBlue,
-                                    fontSize = 14.sp
-                                )
+                        Column() {
+                            TextInput(
+                                modifier = Modifier.fillMaxWidth(),
+                                value = useremail,
+                                onValueChange = { useremail = it },
+                                label = "Seu email favorito",
+                                leadingIconResId = R.drawable.mails,
+                                leadingIconTint = Zinc50
                             )
                         }
                     }
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    /* =================== Button Login =================== */
+                    /* =================== Button Send =================== */
                     Button(
                         onClick = { /* Handle login */ },
                         shape = RoundedCornerShape(8.dp),
@@ -163,7 +123,7 @@ fun LoginScreen() {
                         Text(
                             color = Zinc50,
                             fontSize = 20.sp,
-                            text = "Entrar",
+                            text = "Enviar",
                             onTextLayout = { }
                         )
                     }
@@ -182,14 +142,13 @@ fun LoginScreen() {
                             text = " "
                         )
                         ClickableText(
-                            text = AnnotatedString("Crie uma"),
+                            text = AnnotatedString("Regriste uma"),
+                            onClick = { /* Handle login */ },
                             style = TextStyle(
                                 color = RoyalBlue,
                                 fontSize = 14.sp
                             )
-                        ) {
-                            
-                        }
+                        )
                     }
                 }
             }
