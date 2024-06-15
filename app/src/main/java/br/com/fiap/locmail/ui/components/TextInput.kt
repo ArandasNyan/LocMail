@@ -1,5 +1,5 @@
 // ui/components/TextInput.kt
-package br.com.fiap.locmail.ui.theme.components
+package br.com.fiap.locmail.ui.components
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape

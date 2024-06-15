@@ -1,37 +1,14 @@
-package br.com.fiap.locmail.ui.theme.screens.login.register
+// ui/screens/LoginScreen.kt
+package br.com.fiap.locmail.ui.screens.login
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Checkbox
-import androidx.compose.material3.CheckboxDefaults
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
@@ -43,10 +20,11 @@ import br.com.fiap.locmail.ui.theme.RoyalBlue
 import br.com.fiap.locmail.ui.theme.Zinc50
 import br.com.fiap.locmail.ui.theme.Zinc700
 import br.com.fiap.locmail.ui.theme.Zinc900
-import br.com.fiap.locmail.ui.theme.components.TextInput
+import br.com.fiap.locmail.ui.components.CustomButton
+import br.com.fiap.locmail.ui.components.TextInput
 
 @Composable
-fun NewAccountScreen() {
+fun LoginScreen() {
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var rememberMe by remember { mutableStateOf(false) }
@@ -57,7 +35,7 @@ fun NewAccountScreen() {
     ) {
         Column(
             modifier = Modifier
-                .padding(0.dp, 104.dp, 0.dp, 0.dp)
+                .padding(0.dp, 88.dp, 0.dp, 0.dp)
                 .fillMaxSize(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
@@ -86,7 +64,7 @@ fun NewAccountScreen() {
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = "Crie uma Conta!",
+                        text = "Bem-Vindo!",
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Medium,
                         color = Zinc50,
@@ -94,7 +72,7 @@ fun NewAccountScreen() {
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        text = "Ficamos felizes por nos escolher!",
+                        text = "Que bom ver você novamente!",
                         fontSize = 16.sp,
                         color = Zinc50,
                         onTextLayout = { }
@@ -112,39 +90,23 @@ fun NewAccountScreen() {
                     Column(
                         modifier = Modifier.padding(0.dp, 12.dp)
                     ) {
-                        Column() {
-                            TextInput(
-                                modifier = Modifier
-                                    .fillMaxWidth(),
-                                value = username,
-                                onValueChange = { username = it },
-                                label = "Seu nome de usuário",
-                                leadingIconResId = R.drawable.at_sign,
-                                leadingIconTint = Zinc50
-                            )
+                        TextInput(
+                            modifier = Modifier.fillMaxWidth(),
+                            value = username,
+                            onValueChange = { username = it },
+                            label = "Seu usuário",
+                            leadingIconResId = R.drawable.at_sign,
+                            leadingIconTint = Zinc50
+                        )
 
-                            TextInput(
-                                modifier = Modifier
-                                    .fillMaxWidth(),
-                                value = password,
-                                onValueChange = { password = it },
-                                label = "Seu melhor email",
-                                leadingIconResId = R.drawable.mails,
-                                leadingIconTint = Zinc50
-                            )
-
-                            TextInput(
-                                modifier = Modifier
-                                    .fillMaxWidth(),
-                                value = password,
-                                onValueChange = { password = it },
-                                label = "Sua melhor senha",
-                                leadingIconResId = R.drawable.key_round,
-                                leadingIconTint = Zinc50
-                            )
-                        }
-                        
-                        Spacer(modifier = Modifier.height(4.dp))
+                        TextInput(
+                            modifier = Modifier.fillMaxWidth(),
+                            value = password,
+                            onValueChange = { password = it },
+                            label = "Sua senha",
+                            leadingIconResId = R.drawable.key_round,
+                            leadingIconTint = Zinc50
+                        )
 
                         Row(
                             modifier = Modifier.fillMaxWidth(),
@@ -163,8 +125,7 @@ fun NewAccountScreen() {
                                         .size(20.dp, 20.dp),
                                     colors = CheckboxDefaults.colors(
                                         checkedColor = RoyalBlue,
-                                        uncheckedColor = Zinc700
-                                    )
+                                        uncheckedColor = Zinc700)
                                 )
 
                                 Spacer(modifier = Modifier.width(8.dp))
@@ -189,31 +150,27 @@ fun NewAccountScreen() {
                         }
                     }
 
-                    Spacer(modifier = Modifier.height(28.dp))
+                    Spacer(modifier = Modifier.height(16.dp))
 
-                    /* =================== Button Register =================== */
-                    Button(
+                    /* =================== Button Login =================== */
+                    CustomButton(
+                        text = "Entrar",
                         onClick = { /* Handle login */ },
-                        shape = RoundedCornerShape(8.dp),
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(48.dp),
-                        colors = ButtonDefaults.buttonColors(RoyalBlue),
-                    ) {
-                        Text(
-                            color = Zinc50,
-                            fontSize = 20.sp,
-                            text = "Registrar",
-                            onTextLayout = { }
-                        )
-                    }
+                        shape = RoundedCornerShape(8.dp),
+                        buttonColor = RoyalBlue,
+                        textColor = Zinc50,
+                        fontSize = 20
+                    )
 
                     Spacer(modifier = Modifier.height(16.dp))
 
                     /* =================== Phrase text =================== */
                     Row {
                         Text(
-                            text = "Já possui uma conta?",
+                            text = "Não possui uma conta?",
                             color = Zinc50,
                             fontSize = 14.sp,
                             onTextLayout = {}
@@ -222,13 +179,14 @@ fun NewAccountScreen() {
                             text = " "
                         )
                         ClickableText(
-                            text = AnnotatedString("Faça seu login"),
-                            onClick = { /* Handle login */ },
+                            text = AnnotatedString("Crie uma"),
                             style = TextStyle(
                                 color = RoyalBlue,
                                 fontSize = 14.sp
                             )
-                        )
+                        ) {
+                            
+                        }
                     }
                 }
             }

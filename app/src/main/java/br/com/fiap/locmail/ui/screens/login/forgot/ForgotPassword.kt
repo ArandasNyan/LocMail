@@ -1,5 +1,5 @@
 // ui/screens/LoginScreen.kt
-package br.com.fiap.locmail.ui.theme.screens.login.forgot
+package br.com.fiap.locmail.ui.screens.login.forgot
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -18,7 +18,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.fiap.locmail.R
 import br.com.fiap.locmail.ui.theme.*
-import br.com.fiap.locmail.ui.theme.components.TextInput
+import br.com.fiap.locmail.ui.components.CustomButton
+import br.com.fiap.locmail.ui.components.TextInput
 
 @Composable
 fun ForgotPasswordScreen() {
@@ -112,21 +113,17 @@ fun ForgotPasswordScreen() {
                     Spacer(modifier = Modifier.height(16.dp))
 
                     /* =================== Button Send =================== */
-                    Button(
+                    CustomButton(
+                        text = "Enviar",
                         onClick = { /* Handle login */ },
-                        shape = RoundedCornerShape(8.dp),
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(48.dp),
-                        colors = ButtonDefaults.buttonColors(RoyalBlue)
-                    ) {
-                        Text(
-                            color = Zinc50,
-                            fontSize = 20.sp,
-                            text = "Enviar",
-                            onTextLayout = { }
-                        )
-                    }
+                        shape = RoundedCornerShape(8.dp),
+                        buttonColor = RoyalBlue,
+                        textColor = Zinc50,
+                        fontSize = 20
+                    )
 
                     Spacer(modifier = Modifier.height(16.dp))
 

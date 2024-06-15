@@ -6,9 +6,10 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.Surface
 import br.com.fiap.locmail.ui.theme.LocMailTheme
-import br.com.fiap.locmail.ui.theme.screens.login.LoginScreen
-import br.com.fiap.locmail.ui.theme.screens.login.forgot.ForgotPasswordScreen
-import br.com.fiap.locmail.ui.theme.screens.login.register.NewAccountScreen
+import br.com.fiap.locmail.ui.screens.home.HomeScreen
+import br.com.fiap.locmail.ui.screens.login.LoginScreen
+import br.com.fiap.locmail.ui.screens.login.forgot.ForgotPasswordScreen
+import br.com.fiap.locmail.ui.screens.login.register.NewAccountScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +18,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             LocMailTheme {
                 Surface {
-                    NewAccountScreen()
+                    HomeScreen()
                 }
             }
         }
