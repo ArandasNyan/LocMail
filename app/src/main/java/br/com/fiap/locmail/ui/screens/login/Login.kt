@@ -20,7 +20,7 @@ import br.com.fiap.locmail.ui.theme.RoyalBlue
 import br.com.fiap.locmail.ui.theme.Zinc50
 import br.com.fiap.locmail.ui.theme.Zinc700
 import br.com.fiap.locmail.ui.theme.Zinc900
-import br.com.fiap.locmail.ui.components.CustomButton
+import br.com.fiap.locmail.ui.components.buttons.CustomButton
 import br.com.fiap.locmail.ui.components.TextInput
 
 @Composable

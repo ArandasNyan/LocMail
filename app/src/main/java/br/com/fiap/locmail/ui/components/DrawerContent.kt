@@ -30,12 +30,12 @@ fun DrawerContent(
     Column(
         modifier = modifier
             .fillMaxHeight()
-            .widthIn(min = 180.dp, max = 260.dp)
+            .widthIn(min = 180.dp, max = 280.dp)
             .background(MaterialTheme.colorScheme.surface)
             .padding(16.dp, 16.dp, 16.dp, 48.dp)
             .verticalScroll(scrollState)
     ) {
-        Column {
+        Column(modifier = Modifier.padding(top = 16.dp)) {
             // Header with app name
             Text(
                 text = "Locmail",
@@ -91,66 +91,8 @@ fun DrawerContent(
                 title = "Lixeira",
                 onClick = onCloseDrawer
             )
-            DrawerMenuItem(
-                iconResId = R.drawable.box,
-                title = "Caixa de saída",
-                onClick = onCloseDrawer
-            )
-            DrawerMenuItem(
-                iconResId = R.drawable.page_edit,
-                title = "Rascunhos",
-                onClick = onCloseDrawer
-            )
-            DrawerMenuItem(
-                iconResId = R.drawable.shield_alert,
-                title = "Spam",
-                onClick = onCloseDrawer
-            )
-            DrawerMenuItem(
-                iconResId = R.drawable.trash,
-                title = "Lixeira",
-                onClick = onCloseDrawer
-            )
-            DrawerMenuItem(
-                iconResId = R.drawable.box,
-                title = "Caixa de saída",
-                onClick = onCloseDrawer
-            )
-            DrawerMenuItem(
-                iconResId = R.drawable.page_edit,
-                title = "Rascunhos",
-                onClick = onCloseDrawer
-            )
-            DrawerMenuItem(
-                iconResId = R.drawable.shield_alert,
-                title = "Spam",
-                onClick = onCloseDrawer
-            )
-            DrawerMenuItem(
-                iconResId = R.drawable.trash,
-                title = "Lixeira",
-                onClick = onCloseDrawer
-            )
-            DrawerMenuItem(
-                iconResId = R.drawable.box,
-                title = "Caixa de saída",
-                onClick = onCloseDrawer
-            )
-            DrawerMenuItem(
-                iconResId = R.drawable.page_edit,
-                title = "Rascunhos",
-                onClick = onCloseDrawer
-            )
-            DrawerMenuItem(
-                iconResId = R.drawable.shield_alert,
-                title = "Spam",
-                onClick = onCloseDrawer
-            )
-            DrawerMenuItem(
-                iconResId = R.drawable.trash,
-                title = "Lixeira",
-                onClick = onCloseDrawer
-            )
+
+            Spacer(modifier = Modifier.height(16.dp))
 
             // Apps de Integração
             Text(
@@ -168,6 +110,7 @@ fun DrawerContent(
                 title = "Google Contato",
                 onClick = onCloseDrawer
             )
+            Spacer(modifier = Modifier.height(16.dp))
         }
 
         HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))

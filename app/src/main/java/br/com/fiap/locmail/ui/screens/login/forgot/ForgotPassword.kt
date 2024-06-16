@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.fiap.locmail.R
 import br.com.fiap.locmail.ui.theme.*
-import br.com.fiap.locmail.ui.components.CustomButton
+import br.com.fiap.locmail.ui.components.buttons.CustomButton
 import br.com.fiap.locmail.ui.components.TextInput
 
 @Composable

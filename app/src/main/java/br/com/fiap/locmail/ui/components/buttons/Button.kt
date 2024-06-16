@@ -1,4 +1,4 @@
-package br.com.fiap.locmail.ui.components
+package br.com.fiap.locmail.ui.components.buttons
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
