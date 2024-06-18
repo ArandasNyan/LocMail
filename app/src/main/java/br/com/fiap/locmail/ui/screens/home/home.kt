@@ -249,95 +249,98 @@ fun getAllEmails(): List<Email> = listOf(
         time = "10:10 PM",
         isRead = true,
         iconId = R.drawable.laurafaustino,
+        isArchived = false
+    ),
+    Email(
+        sender = "Danilo Almeida",
+        subject = "Revisão do código",
+        contentPreview = "Precisamos revisar o código do projeto.",
+        time = "09:15 AM",
+        isRead = false,
+        iconId = R.drawable.danilo,
         isArchived = true
     ),
     Email(
-        sender = "Laura Faustino",
-        subject = "Design app do challenge local web",
-        contentPreview = "Olá, tudo bem? Queria falar sobre o seu design app.",
-        time = "10:10 PM",
+        sender = "Gustavo Silva",
+        subject = "Planejamento da reunião",
+        contentPreview = "Podemos agendar uma reunião para discutir o plano?",
+        time = "02:30 PM",
+        isRead = true,
+        iconId = R.drawable.cat,
+        isArchived = false
+    ),
+    Email(
+        sender = "Carla Souza",
+        subject = "Atualização da documentação",
+        contentPreview = "Atualizei a documentação conforme solicitado.",
+        time = "11:45 AM",
+        isRead = true,
+        iconId = R.drawable.danilo,
+        isArchived = false
+    ),
+    Email(
+        sender = "Bruno Martins",
+        subject = "Feedback do cliente",
+        contentPreview = "Recebemos feedback positivo do cliente!",
+        time = "04:20 PM",
         isRead = false,
         iconId = R.drawable.laurafaustino,
+        isArchived = false
+    ),
+    Email(
+        sender = "Fernanda Costa",
+        subject = "Teste de integração",
+        contentPreview = "Os testes de integração foram concluídos com sucesso.",
+        time = "08:05 AM",
+        isRead = true,
+        iconId = R.drawable.cat,
         isArchived = true
     ),
     Email(
-        sender = "Laura Faustino",
-        subject = "Design app do challenge local web",
-        contentPreview = "Olá, tudo bem? Queria falar sobre o seu design app.",
-        time = "10:10 PM",
+        sender = "Roberto Lima",
+        subject = "Bug encontrado",
+        contentPreview = "Encontramos um bug na última atualização.",
+        time = "07:50 PM",
         isRead = false,
-        iconId = R.drawable.laurafaustino,
+        iconId = R.drawable.danilo,
         isArchived = false
     ),
     Email(
-        sender = "Laura Faustino",
-        subject = "Design app do challenge local web",
-        contentPreview = "Olá, tudo bem? Queria falar sobre o seu design app.",
-        time = "10:10 PM",
-        isRead = true,
-        iconId = R.drawable.laurafaustino,
-        isArchived = false
-    ),
-    Email(
-        sender = "Laura Faustino",
-        subject = "Design app do challenge local web",
-        contentPreview = "Olá, tudo bem? Queria falar sobre o seu design app.",
-        time = "10:10 PM",
-        isRead = true,
-        iconId = R.drawable.laurafaustino,
-        isArchived = false
-    ),Email(
-        sender = "Laura Faustino",
-        subject = "Design app do challenge local web",
-        contentPreview = "Olá, tudo bem? Queria falar sobre o seu design app.",
-        time = "10:10 PM",
+        sender = "Mariana Lopes",
+        subject = "Nova funcionalidade",
+        contentPreview = "A nova funcionalidade está pronta para ser testada.",
+        time = "03:15 PM",
         isRead = true,
         iconId = R.drawable.laurafaustino,
         isArchived = false
     ),
     Email(
-        sender = "Laura Faustino",
-        subject = "Design app do challenge local web",
-        contentPreview = "Olá, tudo bem? Queria falar sobre o seu design app.",
-        time = "10:10 PM",
+        sender = "João Pereira",
+        subject = "Backup do sistema",
+        contentPreview = "O backup do sistema foi concluído sem problemas.",
+        time = "06:30 AM",
         isRead = true,
-        iconId = R.drawable.laurafaustino,
-        isArchived = false
-    ),Email(
-        sender = "Laura Faustino",
-        subject = "Design app do challenge local web",
-        contentPreview = "Olá, tudo bem? Queria falar sobre o seu design app.",
-        time = "10:10 PM",
-        isRead = true,
-        iconId = R.drawable.laurafaustino,
+        iconId = R.drawable.cat,
+        isArchived = true
+    ),
+    Email(
+        sender = "Ana Beatriz",
+        subject = "Alteração de horário",
+        contentPreview = "Alteramos o horário da reunião para amanhã às 10h.",
+        time = "12:00 PM",
+        isRead = false,
+        iconId = R.drawable.danilo,
         isArchived = false
     ),
     Email(
-        sender = "Laura Faustino",
-        subject = "Design app do challenge local web",
-        contentPreview = "Olá, tudo bem? Queria falar sobre o seu design app.",
-        time = "10:10 PM",
+        sender = "Lucas Nunes",
+        subject = "Reunião de alinhamento",
+        contentPreview = "Vamos marcar uma reunião para alinhar os próximos passos.",
+        time = "05:45 PM",
         isRead = true,
         iconId = R.drawable.laurafaustino,
         isArchived = false
-    ),Email(
-        sender = "Laura Faustino",
-        subject = "Design app do challenge local web",
-        contentPreview = "Olá, tudo bem? Queria falar sobre o seu design app.",
-        time = "10:10 PM",
-        isRead = true,
-        iconId = R.drawable.laurafaustino,
-        isArchived = false
-    ),
-    Email(
-        sender = "Laura Faustino",
-        subject = "Design app do challenge local web",
-        contentPreview = "Olá, tudo bem? Queria falar sobre o seu design app.",
-        time = "10:10 PM",
-        isRead = true,
-        iconId = R.drawable.laurafaustino,
-        isArchived = false
-    ),
+    )
 )
 
 fun getReadEmails(): List<Email> = getAllEmails().filter { it.isRead }

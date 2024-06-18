@@ -1,4 +1,4 @@
-// ui/screens/LoginScreen.kt
+// LoginScreen.kt
 package br.com.fiap.locmail.ui.screens.login
 
 import androidx.compose.foundation.Image
@@ -15,6 +15,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import br.com.fiap.locmail.R
 import br.com.fiap.locmail.ui.theme.RoyalBlue
 import br.com.fiap.locmail.ui.theme.Zinc50
@@ -24,10 +25,11 @@ import br.com.fiap.locmail.ui.components.buttons.CustomButton
 import br.com.fiap.locmail.ui.components.TextInput
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navController: NavController) {
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var rememberMe by remember { mutableStateOf(false) }
+    var errorMessage by remember { mutableStateOf("") }
 
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -40,7 +42,6 @@ fun LoginScreen() {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            /* =================== Logo Image =================== */
             Image(
                 painter = painterResource(id = R.drawable.logo),
                 contentDescription = "Logo",
@@ -56,7 +57,6 @@ fun LoginScreen() {
                     .offset(y = 0.dp),
                 colors = CardDefaults.cardColors(Zinc900)
             ) {
-                /* =================== Greetings =================== */
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -67,26 +67,22 @@ fun LoginScreen() {
                         text = "Bem-Vindo!",
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Medium,
-                        color = Zinc50,
-                        onTextLayout = { }
+                        color = Zinc50
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
                         text = "Que bom ver você novamente!",
                         fontSize = 16.sp,
-                        color = Zinc50,
-                        onTextLayout = { }
+                        color = Zinc50
                     )
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                /* =================== Form =================== */
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.padding(24.dp, 0.dp)
                 ) {
-                    // Inputs fields, remember me and forgot pass
                     Column(
                         modifier = Modifier.padding(0.dp, 12.dp)
                     ) {
@@ -116,7 +112,6 @@ fun LoginScreen() {
                             Row(
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
-                                /* =================== Check Box =================== */
                                 Checkbox(
                                     checked = rememberMe,
                                     onCheckedChange = { rememberMe = it },
@@ -133,12 +128,10 @@ fun LoginScreen() {
                                 Text(
                                     text = "Lembre de mim!",
                                     color = Zinc50,
-                                    fontSize = 14.sp,
-                                    onTextLayout = { }
+                                    fontSize = 14.sp
                                 )
                             }
 
-                            /* =================== Phrase Forgot =================== */
                             ClickableText(
                                 text = AnnotatedString("Esqueceu a senha?"),
                                 onClick = { /* Handle click */ },
@@ -152,10 +145,15 @@ fun LoginScreen() {
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    /* =================== Button Login =================== */
                     CustomButton(
                         text = "Entrar",
-                        onClick = { /* Handle login */ },
+                        onClick = {
+                            if (validateLogin(username, password)) {
+                                navController.navigate("home")
+                            } else {
+                                errorMessage = "Usuário ou senha inválidos"
+                            }
+                        },
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(48.dp),
@@ -167,15 +165,19 @@ fun LoginScreen() {
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    /* =================== Phrase text =================== */
+                    Text(
+                        text = errorMessage,
+                        color = MaterialTheme.colorScheme.error,
+                        fontSize = 14.sp
+                    )
+
                     Row {
                         Text(
                             text = "Não possui uma conta?",
                             color = Zinc50,
-                            fontSize = 14.sp,
-                            onTextLayout = {}
+                            fontSize = 14.sp
                         )
-                        Text (
+                        Text(
                             text = " "
                         )
                         ClickableText(
@@ -183,13 +185,19 @@ fun LoginScreen() {
                             style = TextStyle(
                                 color = RoyalBlue,
                                 fontSize = 14.sp
-                            )
-                        ) {
-                            
-                        }
+                            ),
+                            onClick = {
+                                // Navegar para a tela de criação de conta
+                            }
+                        )
                     }
                 }
             }
         }
     }
+}
+
+fun validateLogin(username: String, password: String): Boolean {
+    // Validação simples de exemplo
+    return username == "admin" && password == "1234"
 }

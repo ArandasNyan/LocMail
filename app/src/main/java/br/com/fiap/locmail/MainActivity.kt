@@ -5,6 +5,10 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.Surface
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import br.com.fiap.locmail.ui.screens.home.EmailScreen
 import br.com.fiap.locmail.ui.theme.LocMailTheme
 import br.com.fiap.locmail.ui.screens.home.HomeScreen
 import br.com.fiap.locmail.ui.screens.login.LoginScreen
@@ -17,8 +21,14 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             LocMailTheme {
-                Surface {
-                    HomeScreen()
+                val navController = rememberNavController()
+                NavHost(navController = navController, startDestination = "login") {
+                    composable("login") {
+                        LoginScreen(navController)
+                    }
+                    composable("home") {
+                        HomeScreen()
+                    }
                 }
             }
         }
